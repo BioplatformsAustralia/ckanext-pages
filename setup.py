@@ -17,7 +17,7 @@ setup(
 	namespace_packages=['ckanext', 'ckanext.pages'],
 	include_package_data=True,
 	package_data={
-            '': ['theme/*/*.html', 'theme/*/*/*.html', 'theme/*/*/*/*.html'],
+            '': ['theme/*/*.html', 'theme/*/*/*.html', 'theme/*/*/*/*.html', 'fanstatic/css/*.css', 'fanstatic/js/*.js'],
 	},
 	zip_safe=False,
 	install_requires=[
