@@ -51,6 +51,9 @@ def page_privacy(context, data_dict):
     out = db.Page.get(group_id=org_id, name=page)
     if out and out.private == False:
         return {'success':  True}
+    # Bioplatforms change: permit anonymous listing of available pages
+    if page == '' and out is None:
+        return {'success':  True}
     # no org_id means it's a universal page
     if not org_id:
         if out and out.private:
