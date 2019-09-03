@@ -66,6 +66,8 @@ def init_db(model):
         conn.execute(sql)
     except sa.exc.ProgrammingError:
         pass
+    except sa.exc.DBAPIError:
+        pass
     model.Session.commit()
 
     sql_upgrade_01 = (
@@ -80,6 +82,8 @@ def init_db(model):
             conn.execute(statement)
     except sa.exc.ProgrammingError:
         pass
+    except sa.exc.DBAPIError:
+        pass
     model.Session.commit()
 
     sql_upgrade_02 = ('ALTER TABLE ckanext_pages add column extras Text;',
@@ -90,6 +94,8 @@ def init_db(model):
         for statement in sql_upgrade_02:
             conn.execute(statement)
     except sa.exc.ProgrammingError:
+        pass
+    except sa.exc.DBAPIError:
         pass
     model.Session.commit()
 
